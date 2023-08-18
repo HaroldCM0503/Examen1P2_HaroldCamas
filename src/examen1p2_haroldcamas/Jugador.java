@@ -163,7 +163,7 @@ public abstract class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador: " + nombre;
+        return nombre;
     }
     
     public abstract Jugador noPropias(Jugador j);

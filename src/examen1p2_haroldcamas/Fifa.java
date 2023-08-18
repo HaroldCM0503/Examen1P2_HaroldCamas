@@ -4,6 +4,7 @@
  */
 package examen1p2_haroldcamas;
 
+import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -62,7 +63,17 @@ public class Fifa extends javax.swing.JFrame {
         cb_equiposEstadio = new javax.swing.JComboBox<>();
         bt_agregarEstadio = new javax.swing.JButton();
         jp_Listar = new javax.swing.JPanel();
+        cb_tiposListar = new javax.swing.JComboBox<>();
+        lb_tipo = new javax.swing.JLabel();
+        bt_listar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TxA_lista = new javax.swing.JTextArea();
         jp_Modificar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cb_tipoModificar = new javax.swing.JComboBox<>();
+        cb_cualModificar = new javax.swing.JComboBox<>();
+        bt_Modificar = new javax.swing.JButton();
         jp_Eliminar = new javax.swing.JPanel();
         jp_Simulacion = new javax.swing.JPanel();
 
@@ -225,13 +236,21 @@ public class Fifa extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar Jugador", jp_agregarJugador);
 
+        lb_nombreEstadio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lb_nombreEstadio.setText("Nombre");
+        lb_nombreEstadio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        lb_ciudad.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lb_ciudad.setText("Ciudad");
+        lb_ciudad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        lb_capacidad.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lb_capacidad.setText("Capacidad");
+        lb_capacidad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        lb_equipoEstadio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lb_equipoEstadio.setText("Equipo ");
+        lb_equipoEstadio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         bt_agregarEstadio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         bt_agregarEstadio.setText("Agregar Estadio");
@@ -263,7 +282,7 @@ public class Fifa extends javax.swing.JFrame {
                     .addGroup(jp_agregarEstadioLayout.createSequentialGroup()
                         .addGap(216, 216, 216)
                         .addComponent(bt_agregarEstadio)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jp_agregarEstadioLayout.setVerticalGroup(
             jp_agregarEstadioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,28 +310,110 @@ public class Fifa extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar Estadio", jp_agregarEstadio);
 
+        cb_tiposListar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugadores", "Equipos", "Estadios" }));
+
+        lb_tipo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lb_tipo.setText("Tipo a Listar:");
+        lb_tipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        bt_listar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        bt_listar.setText("Listar");
+        bt_listar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_listarMouseClicked(evt);
+            }
+        });
+
+        TxA_lista.setColumns(20);
+        TxA_lista.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        TxA_lista.setRows(5);
+        jScrollPane1.setViewportView(TxA_lista);
+
         javax.swing.GroupLayout jp_ListarLayout = new javax.swing.GroupLayout(jp_Listar);
         jp_Listar.setLayout(jp_ListarLayout);
         jp_ListarLayout.setHorizontalGroup(
             jp_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_ListarLayout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addGroup(jp_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jp_ListarLayout.createSequentialGroup()
+                        .addComponent(lb_tipo)
+                        .addGap(98, 98, 98)
+                        .addComponent(cb_tiposListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(193, 193, 193))
+            .addGroup(jp_ListarLayout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addComponent(bt_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_ListarLayout.setVerticalGroup(
             jp_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jp_ListarLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jp_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_tiposListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_tipo))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(bt_listar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Listar", jp_Listar);
+
+        jLabel1.setText("Tipo a modificar");
+
+        jLabel2.setText("Cual modificar");
+
+        cb_tipoModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugadores", "Equipos", "Estadios" }));
+        cb_tipoModificar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoModificarItemStateChanged(evt);
+            }
+        });
+
+        bt_Modificar.setText("Modificar");
+        bt_Modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_ModificarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_ModificarLayout = new javax.swing.GroupLayout(jp_Modificar);
         jp_Modificar.setLayout(jp_ModificarLayout);
         jp_ModificarLayout.setHorizontalGroup(
             jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jp_ModificarLayout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(73, 73, 73)
+                .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cb_tipoModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_cualModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_ModificarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202))
         );
         jp_ModificarLayout.setVerticalGroup(
             jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jp_ModificarLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cb_tipoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cb_cualModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addComponent(bt_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jp_Modificar);
@@ -370,6 +471,7 @@ public class Fifa extends javax.swing.JFrame {
             modeloEquipos.addElement(q);
             cb_equipos.setModel(modeloEquipos);
             cb_equiposEstadio.setModel(modeloEquipos);
+            equipos.add(q);
         }
     }//GEN-LAST:event_bt_agregarEquipoMouseClicked
 
@@ -377,6 +479,11 @@ public class Fifa extends javax.swing.JFrame {
         if(Tx_nombreJugador.getText().equals("") || Tx_nacionalidad.getText().equals("") || cb_equipos.getSelectedIndex() == -1 || FTx_edad.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Debe de llenar todas las casillas!");
         }
+        
+        else if(((Equipo) cb_equipos.getSelectedItem()).getPlantilla().size() == 4){
+            JOptionPane.showMessageDialog(this, "El equipo seleccionado ya tiene 4 jugadores!");
+        }
+        
         else{
             if(cb_posicion.getSelectedItem().equals("Portero")){
                 Jugador j = new Portero(Tx_nombreJugador.getText(), Integer.parseInt(FTx_edad.getText()), Tx_nacionalidad.getText(),(String) cb_pieHabil.getSelectedItem(),(Equipo) cb_equipos.getSelectedItem());
@@ -385,6 +492,7 @@ public class Fifa extends javax.swing.JFrame {
                 j.setRating(j.calcularRating());
                 ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
                 ((Equipo) cb_equipos.getSelectedItem()).setRating(((Equipo) cb_equipos.getSelectedItem()).promedioRatings());
+                jugadores.add(j);
             }
             else if(cb_posicion.getSelectedItem().equals("Defensa")){
                 Jugador j = new Defensa(Tx_nombreJugador.getText(), Integer.parseInt(FTx_edad.getText()), Tx_nacionalidad.getText(),(String) cb_pieHabil.getSelectedItem(),(Equipo) cb_equipos.getSelectedItem());
@@ -393,6 +501,7 @@ public class Fifa extends javax.swing.JFrame {
                 j.setRating(j.calcularRating());
                 ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
                 ((Equipo) cb_equipos.getSelectedItem()).setRating(((Equipo) cb_equipos.getSelectedItem()).promedioRatings());
+                jugadores.add(j);
             }
             
             else if(cb_posicion.getSelectedItem().equals("Medio Campo")){
@@ -402,6 +511,7 @@ public class Fifa extends javax.swing.JFrame {
                 j.setRating(j.calcularRating());
                 ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
                 ((Equipo) cb_equipos.getSelectedItem()).setRating(((Equipo) cb_equipos.getSelectedItem()).promedioRatings());
+                jugadores.add(j);
             }
             
             else if(cb_posicion.getSelectedItem().equals("Delantero")){
@@ -411,6 +521,7 @@ public class Fifa extends javax.swing.JFrame {
                 j.setRating(j.calcularRating());
                 ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
                 ((Equipo) cb_equipos.getSelectedItem()).setRating(((Equipo) cb_equipos.getSelectedItem()).promedioRatings());
+                jugadores.add(j);
             }
             
             Tx_nombreJugador.setText("");
@@ -432,9 +543,76 @@ public class Fifa extends javax.swing.JFrame {
            Tx_ciudad.setText("");
            Tx_capacidad.setText("");
            cb_equiposEstadio.setSelectedIndex(-1);
+           estadios.add(st);
            JOptionPane.showMessageDialog(this, "Estadio agregado exitosamente!");
         }
     }//GEN-LAST:event_bt_agregarEstadioMouseClicked
+
+    private void bt_listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_listarMouseClicked
+        int cc = 1;
+        String lista = "";
+        if(cb_tiposListar.getSelectedItem().equals("Jugadores")){
+            for (Jugador jugador : jugadores) {
+                lista += cc + ".) " + jugador.toString() + " [" + jugador.getRating() + "], " + jugador.getNacionalidad();
+                lista += "\n";
+                cc++;
+            }
+        }
+        
+        else if(cb_tiposListar.getSelectedItem().equals("Equipos")){
+            for (Equipo equipo : equipos) {
+                lista += cc + ".) " + equipo.toString() + " [" + equipo.getRating() + "], " + equipo.getPais();
+                lista += "\n";
+                cc++;
+            }
+        }
+        
+        else{
+            for (Estadio estadio : estadios) {
+                lista += cc + ".) " + estadio.toString() + ", " + estadio.getCiudad() + " [" + estadio.getCapacidad() + "] " + "del " + estadio.getEquipo();
+                lista += "\n";
+                cc++;
+            }
+        }
+        TxA_lista.setText(lista);
+    }//GEN-LAST:event_bt_listarMouseClicked
+
+    private void cb_tipoModificarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoModificarItemStateChanged
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_tipoModificar.getModel();
+        DefaultComboBoxModel opciones = (DefaultComboBoxModel) cb_cualModificar.getModel();
+        String tipo = modelo.getSelectedItem().toString();
+        opciones.removeAllElements();
+        
+        if(tipo.equals("Jugadores")){
+            for (Jugador j : jugadores) {
+                opciones.addElement(j);
+            }
+            cb_cualModificar.setModel(opciones);
+        }
+        else if(tipo.equals("Equipos")){
+            for (Equipo q : equipos) {
+                opciones.addElement(q);
+            }
+            cb_cualModificar.setModel(opciones);
+        }
+        else{
+            for (Estadio st : estadios) {
+                opciones.addElement(st);
+            }
+            cb_cualModificar.setModel(opciones);
+        }
+    }//GEN-LAST:event_cb_tipoModificarItemStateChanged
+
+    private void bt_ModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ModificarMouseClicked
+        if(cb_cualModificar.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Tiene que elegir cual modificar!");
+        }
+        else{
+            if(cb_cualModificar.getSelectedItem() instanceof Jugador){
+                
+            }
+        }
+    }//GEN-LAST:event_bt_ModificarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -471,9 +649,15 @@ public class Fifa extends javax.swing.JFrame {
         });
     }
     
+    ArrayList<Jugador> jugadores = new ArrayList();
+    ArrayList<Equipo> equipos = new ArrayList();
+    ArrayList<Estadio> estadios = new ArrayList();
+    DefaultComboBoxModel modeloJugadores;
     DefaultComboBoxModel modeloEquipos;
+    DefaultComboBoxModel modeloEstadios;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FTx_edad;
+    private javax.swing.JTextArea TxA_lista;
     private javax.swing.JTextField Tx_capacidad;
     private javax.swing.JTextField Tx_ciudad;
     private javax.swing.JTextField Tx_nacionalidad;
@@ -481,13 +665,21 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JTextField Tx_nombreEstadio;
     private javax.swing.JTextField Tx_nombreJugador;
     private javax.swing.JTextField Tx_pais;
+    private javax.swing.JButton bt_Modificar;
     private javax.swing.JButton bt_agregarEquipo;
     private javax.swing.JButton bt_agregarEstadio;
     private javax.swing.JButton bt_agregarJugador;
+    private javax.swing.JButton bt_listar;
+    private javax.swing.JComboBox<String> cb_cualModificar;
     private javax.swing.JComboBox<String> cb_equipos;
     private javax.swing.JComboBox<String> cb_equiposEstadio;
     private javax.swing.JComboBox<String> cb_pieHabil;
     private javax.swing.JComboBox<String> cb_posicion;
+    private javax.swing.JComboBox<String> cb_tipoModificar;
+    private javax.swing.JComboBox<String> cb_tiposListar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel jp_AgregarEquipo;
     private javax.swing.JPanel jp_Eliminar;
@@ -508,5 +700,6 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JLabel lb_pais;
     private javax.swing.JLabel lb_pieHabil;
     private javax.swing.JLabel lb_posicion;
+    private javax.swing.JLabel lb_tipo;
     // End of variables declaration//GEN-END:variables
 }
