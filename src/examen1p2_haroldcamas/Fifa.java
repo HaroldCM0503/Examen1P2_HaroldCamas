@@ -4,6 +4,8 @@
  */
 package examen1p2_haroldcamas;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +38,19 @@ public class Fifa extends javax.swing.JFrame {
         Tx_pais = new javax.swing.JTextField();
         bt_agregarEquipo = new javax.swing.JButton();
         jp_agregarJugador = new javax.swing.JPanel();
+        lb_nombreJugador = new javax.swing.JLabel();
+        lb_edad = new javax.swing.JLabel();
+        lb_nacionalidad = new javax.swing.JLabel();
+        lb_pieHabil = new javax.swing.JLabel();
+        Tx_nombreJugador = new javax.swing.JTextField();
+        Tx_nacionalidad = new javax.swing.JTextField();
+        cb_pieHabil = new javax.swing.JComboBox<>();
+        lb_equipoJugador = new javax.swing.JLabel();
+        cb_equipos = new javax.swing.JComboBox<>();
+        bt_agregarJugador = new javax.swing.JButton();
+        lb_posicion = new javax.swing.JLabel();
+        cb_posicion = new javax.swing.JComboBox<>();
+        FTx_edad = new javax.swing.JTextField();
         jp_agregarEstadio = new javax.swing.JPanel();
         jp_Listar = new javax.swing.JPanel();
         jp_Modificar = new javax.swing.JPanel();
@@ -103,15 +118,87 @@ public class Fifa extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar Equipo", jp_AgregarEquipo);
 
+        lb_nombreJugador.setText("Nombre");
+
+        lb_edad.setText("Edad");
+
+        lb_nacionalidad.setText("Nacionalidad");
+
+        lb_pieHabil.setText("Pie Habil");
+
+        cb_pieHabil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Derecho", "Izquierdo" }));
+
+        lb_equipoJugador.setText("Equipo");
+
+        bt_agregarJugador.setText("Agregar Jugador");
+        bt_agregarJugador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarJugadorMouseClicked(evt);
+            }
+        });
+
+        lb_posicion.setText("Posicion");
+
+        cb_posicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portero", "Defensa", "Medio Campo", "Delantero" }));
+
         javax.swing.GroupLayout jp_agregarJugadorLayout = new javax.swing.GroupLayout(jp_agregarJugador);
         jp_agregarJugador.setLayout(jp_agregarJugadorLayout);
         jp_agregarJugadorLayout.setHorizontalGroup(
             jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jp_agregarJugadorLayout.createSequentialGroup()
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_agregarJugadorLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lb_equipoJugador)
+                            .addComponent(lb_pieHabil)
+                            .addComponent(lb_nacionalidad)
+                            .addComponent(lb_edad)
+                            .addComponent(lb_nombreJugador)
+                            .addComponent(lb_posicion))
+                        .addGap(130, 130, 130)
+                        .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_pieHabil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_equipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_posicion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Tx_nombreJugador)
+                            .addComponent(Tx_nacionalidad)
+                            .addComponent(FTx_edad)))
+                    .addGroup(jp_agregarJugadorLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(bt_agregarJugador)))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         jp_agregarJugadorLayout.setVerticalGroup(
             jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jp_agregarJugadorLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_nombreJugador)
+                    .addComponent(Tx_nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_edad)
+                    .addComponent(FTx_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_nacionalidad)
+                    .addComponent(Tx_nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_pieHabil)
+                    .addComponent(cb_pieHabil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_equipoJugador)
+                    .addComponent(cb_equipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_posicion)
+                    .addComponent(cb_posicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(bt_agregarJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
 
         jTabbedPane1.addTab("Agregar Jugador", jp_agregarJugador);
@@ -203,9 +290,59 @@ public class Fifa extends javax.swing.JFrame {
             Equipo q = new Equipo(Tx_nombreEquipo.getText(), Tx_pais.getText(), 0);
             Tx_nombreEquipo.setText("");
             Tx_pais.setText("");
-            JOptionPane.showMessageDialog(this, "Jugador agregado exitosamente");
+            JOptionPane.showMessageDialog(this, "Equipo agregado exitosamente");
+            modeloEquipos = (DefaultComboBoxModel) cb_equipos.getModel();
+            modeloEquipos.addElement(q);
+            cb_equipos.setModel(modeloEquipos);
         }
     }//GEN-LAST:event_bt_agregarEquipoMouseClicked
+
+    private void bt_agregarJugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarJugadorMouseClicked
+        if(Tx_nombreJugador.getText().equals("") || Tx_nacionalidad.getText().equals("") || cb_equipos.getSelectedIndex() == -1 || FTx_edad.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todas las casillas!");
+        }
+        else{
+            if(cb_posicion.getSelectedItem().equals("Portero")){
+                Jugador j = new Portero(Tx_nombreJugador.getText(), Integer.parseInt(FTx_edad.getText()), Tx_nacionalidad.getText(),(String) cb_pieHabil.getSelectedItem(),(Equipo) cb_equipos.getSelectedItem());
+                j = j.Propias(j);
+                j = j.noPropias(j);
+                j.setRating(j.calcularRating());
+                ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
+            }
+            else if(cb_posicion.getSelectedItem().equals("Defensa")){
+                Jugador j = new Defensa(Tx_nombreJugador.getText(), Integer.parseInt(FTx_edad.getText()), Tx_nacionalidad.getText(),(String) cb_pieHabil.getSelectedItem(),(Equipo) cb_equipos.getSelectedItem());
+                j = j.Propias(j);
+                j = j.noPropias(j);
+                j.setRating(j.calcularRating());
+                ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
+            }
+            
+            else if(cb_posicion.getSelectedItem().equals("Medio Campo")){
+                Jugador j = new MedioCampo(Tx_nombreJugador.getText(), Integer.parseInt(FTx_edad.getText()), Tx_nacionalidad.getText(),(String) cb_pieHabil.getSelectedItem(),(Equipo) cb_equipos.getSelectedItem());
+                j = j.Propias(j);
+                j = j.noPropias(j);
+                j.setRating(j.calcularRating());
+                ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
+            }
+            
+            else if(cb_posicion.getSelectedItem().equals("Delantero")){
+                Jugador j = new Delantero(Tx_nombreJugador.getText(), Integer.parseInt(FTx_edad.getText()), Tx_nacionalidad.getText(),(String) cb_pieHabil.getSelectedItem(),(Equipo) cb_equipos.getSelectedItem());
+                j = j.Propias(j);
+                j = j.noPropias(j);
+                j.setRating(j.calcularRating());
+                ((Equipo) cb_equipos.getSelectedItem()).getPlantilla().add(j);
+            }
+            
+            Tx_nombreJugador.setText("");
+            Tx_nacionalidad.setText("");
+            FTx_edad.setText("");
+            cb_equipos.setSelectedIndex(-1);
+            cb_pieHabil.setSelectedIndex(-1);
+            cb_posicion.setSelectedIndex(-1);
+            
+            JOptionPane.showMessageDialog(this, "Jugador agregado exitosamente!");
+        }
+    }//GEN-LAST:event_bt_agregarJugadorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -241,11 +378,19 @@ public class Fifa extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    DefaultComboBoxModel modeloEquipos;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField FTx_edad;
+    private javax.swing.JTextField Tx_nacionalidad;
     private javax.swing.JTextField Tx_nombreEquipo;
+    private javax.swing.JTextField Tx_nombreJugador;
     private javax.swing.JTextField Tx_pais;
     private javax.swing.JButton bt_agregarEquipo;
+    private javax.swing.JButton bt_agregarJugador;
+    private javax.swing.JComboBox<String> cb_equipos;
+    private javax.swing.JComboBox<String> cb_pieHabil;
+    private javax.swing.JComboBox<String> cb_posicion;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel jp_AgregarEquipo;
     private javax.swing.JPanel jp_Eliminar;
@@ -254,7 +399,13 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JPanel jp_Simulacion;
     private javax.swing.JPanel jp_agregarEstadio;
     private javax.swing.JPanel jp_agregarJugador;
+    private javax.swing.JLabel lb_edad;
+    private javax.swing.JLabel lb_equipoJugador;
+    private javax.swing.JLabel lb_nacionalidad;
     private javax.swing.JLabel lb_nombreEquipo;
+    private javax.swing.JLabel lb_nombreJugador;
     private javax.swing.JLabel lb_pais;
+    private javax.swing.JLabel lb_pieHabil;
+    private javax.swing.JLabel lb_posicion;
     // End of variables declaration//GEN-END:variables
 }

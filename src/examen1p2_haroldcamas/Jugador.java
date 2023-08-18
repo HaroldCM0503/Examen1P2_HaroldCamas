@@ -33,6 +33,14 @@ public abstract class Jugador {
         this.disparo = disparo;
     }
 
+    public Jugador(String nombre, int edad, String nacionalidad, String pieHabil, Equipo equipo) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nacionalidad = nacionalidad;
+        this.pieHabil = pieHabil;
+        this.equipo = equipo;
+    }
+    
     public String getNombre() {
         return nombre;
     }
