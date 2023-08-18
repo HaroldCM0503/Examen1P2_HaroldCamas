@@ -1,5 +1,7 @@
 package examen1p2_haroldcamas;
 
+import java.util.Random;
+
 public abstract class Jugador {
     String nombre;
     int edad;
@@ -156,11 +158,33 @@ public abstract class Jugador {
         return "Jugador{" + "nombre=" + nombre + ", edad=" + edad + ", nacionalidad=" + nacionalidad + ", pieHabil=" + pieHabil + ", rating=" + rating + ", equipo=" + equipo + ", agarre=" + agarre + ", lanzamiento=" + lanzamiento + ", fisico=" + fisico + ", ritmo=" + ritmo + ", entrada=" + entrada + ", vision=" + vision + ", passing=" + passing + ", regate=" + regate + ", disparo=" + disparo + '}';
     }
     
-    public abstract int noPropias();
+    public abstract Jugador noPropias(Jugador j);
     
-    public abstract int Propias();
+    public abstract Jugador Propias(Jugador j);
     
     public double calcularRating(){
         return (agarre + lanzamiento + fisico + ritmo + entrada + vision + passing + regate + disparo)/9;
+    }
+    
+    public int randomNoPropio(){
+        Random rand = new Random();
+        int rtg = 101;
+        
+        while(rtg > 100){
+            rtg = rand.nextInt(5) + 1;
+            rtg *= 13;
+        }
+        return rtg;
+    }
+    
+    public int randomPropio(){
+        Random rand = new Random();
+        int rtg = 101;
+        
+        while(rtg > 100 || rtg < 70){
+            rtg = rand.nextInt(12) + 1;
+            rtg *= 12;
+        }
+        return rtg;
     }
 }

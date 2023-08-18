@@ -6,5 +6,5 @@ public class Equipo {
     String nombre;
     String pais;
     double rating;
-    ArrayList plantilla = new ArrayList();
+    ArrayList<Jugador> plantilla = new ArrayList();
 }
