@@ -4,6 +4,8 @@
  */
 package examen1p2_haroldcamas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author harol
@@ -26,21 +28,184 @@ public class Fifa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jp_AgregarEquipo = new javax.swing.JPanel();
+        lb_nombreEquipo = new javax.swing.JLabel();
+        lb_pais = new javax.swing.JLabel();
+        Tx_nombreEquipo = new javax.swing.JTextField();
+        Tx_pais = new javax.swing.JTextField();
+        bt_agregarEquipo = new javax.swing.JButton();
+        jp_agregarJugador = new javax.swing.JPanel();
+        jp_agregarEstadio = new javax.swing.JPanel();
+        jp_Listar = new javax.swing.JPanel();
+        jp_Modificar = new javax.swing.JPanel();
+        jp_Eliminar = new javax.swing.JPanel();
+        jp_Simulacion = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lb_nombreEquipo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lb_nombreEquipo.setText("Nombre del Equipo");
+        lb_nombreEquipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lb_pais.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lb_pais.setText("Pais de Origen");
+        lb_pais.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        Tx_nombreEquipo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+
+        Tx_pais.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+
+        bt_agregarEquipo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        bt_agregarEquipo.setText("Agregar Equipo");
+        bt_agregarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarEquipoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_AgregarEquipoLayout = new javax.swing.GroupLayout(jp_AgregarEquipo);
+        jp_AgregarEquipo.setLayout(jp_AgregarEquipoLayout);
+        jp_AgregarEquipoLayout.setHorizontalGroup(
+            jp_AgregarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_AgregarEquipoLayout.createSequentialGroup()
+                .addContainerGap(121, Short.MAX_VALUE)
+                .addGroup(jp_AgregarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_pais)
+                    .addComponent(lb_nombreEquipo))
+                .addGap(72, 72, 72)
+                .addGroup(jp_AgregarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Tx_pais)
+                    .addGroup(jp_AgregarEquipoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(Tx_nombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(155, 155, 155))
+            .addGroup(jp_AgregarEquipoLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(bt_agregarEquipo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_AgregarEquipoLayout.setVerticalGroup(
+            jp_AgregarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_AgregarEquipoLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jp_AgregarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_nombreEquipo)
+                    .addComponent(Tx_nombreEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jp_AgregarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_pais)
+                    .addComponent(Tx_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
+                .addComponent(bt_agregarEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Agregar Equipo", jp_AgregarEquipo);
+
+        javax.swing.GroupLayout jp_agregarJugadorLayout = new javax.swing.GroupLayout(jp_agregarJugador);
+        jp_agregarJugador.setLayout(jp_agregarJugadorLayout);
+        jp_agregarJugadorLayout.setHorizontalGroup(
+            jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_agregarJugadorLayout.setVerticalGroup(
+            jp_agregarJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Agregar Jugador", jp_agregarJugador);
+
+        javax.swing.GroupLayout jp_agregarEstadioLayout = new javax.swing.GroupLayout(jp_agregarEstadio);
+        jp_agregarEstadio.setLayout(jp_agregarEstadioLayout);
+        jp_agregarEstadioLayout.setHorizontalGroup(
+            jp_agregarEstadioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_agregarEstadioLayout.setVerticalGroup(
+            jp_agregarEstadioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Agregar Estadio", jp_agregarEstadio);
+
+        javax.swing.GroupLayout jp_ListarLayout = new javax.swing.GroupLayout(jp_Listar);
+        jp_Listar.setLayout(jp_ListarLayout);
+        jp_ListarLayout.setHorizontalGroup(
+            jp_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_ListarLayout.setVerticalGroup(
+            jp_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Listar", jp_Listar);
+
+        javax.swing.GroupLayout jp_ModificarLayout = new javax.swing.GroupLayout(jp_Modificar);
+        jp_Modificar.setLayout(jp_ModificarLayout);
+        jp_ModificarLayout.setHorizontalGroup(
+            jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_ModificarLayout.setVerticalGroup(
+            jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Modificar", jp_Modificar);
+
+        javax.swing.GroupLayout jp_EliminarLayout = new javax.swing.GroupLayout(jp_Eliminar);
+        jp_Eliminar.setLayout(jp_EliminarLayout);
+        jp_EliminarLayout.setHorizontalGroup(
+            jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_EliminarLayout.setVerticalGroup(
+            jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Eliminar", jp_Eliminar);
+
+        javax.swing.GroupLayout jp_SimulacionLayout = new javax.swing.GroupLayout(jp_Simulacion);
+        jp_Simulacion.setLayout(jp_SimulacionLayout);
+        jp_SimulacionLayout.setHorizontalGroup(
+            jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jp_SimulacionLayout.setVerticalGroup(
+            jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Simulacion", jp_Simulacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_agregarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarEquipoMouseClicked
+        if(Tx_nombreEquipo.getText().equals("") || Tx_pais.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Debe de llenar todas las casillas primero!");
+        }
+        else{
+            Equipo q = new Equipo(Tx_nombreEquipo.getText(), Tx_pais.getText(), 0);
+            Tx_nombreEquipo.setText("");
+            Tx_pais.setText("");
+            JOptionPane.showMessageDialog(this, "Jugador agregado exitosamente");
+        }
+    }//GEN-LAST:event_bt_agregarEquipoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +243,18 @@ public class Fifa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Tx_nombreEquipo;
+    private javax.swing.JTextField Tx_pais;
+    private javax.swing.JButton bt_agregarEquipo;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jp_AgregarEquipo;
+    private javax.swing.JPanel jp_Eliminar;
+    private javax.swing.JPanel jp_Listar;
+    private javax.swing.JPanel jp_Modificar;
+    private javax.swing.JPanel jp_Simulacion;
+    private javax.swing.JPanel jp_agregarEstadio;
+    private javax.swing.JPanel jp_agregarJugador;
+    private javax.swing.JLabel lb_nombreEquipo;
+    private javax.swing.JLabel lb_pais;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,10 +1,10 @@
 package examen1p2_haroldcamas;
 
 public class Estadio {
-    String nombre;
-    String ciudad;
-    int capacidad;
-    Equipo equipo;
+    private String nombre;
+    private String ciudad;
+    private int capacidad;
+    private Equipo equipo;
 
     public Estadio() {
     }

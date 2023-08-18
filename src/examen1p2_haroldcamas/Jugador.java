@@ -3,12 +3,12 @@ package examen1p2_haroldcamas;
 import java.util.Random;
 
 public abstract class Jugador {
-    String nombre;
-    int edad;
-    String nacionalidad;
-    String pieHabil;
-    double rating;
-    Equipo equipo;
+    protected String nombre;
+    protected int edad;
+    protected String nacionalidad;
+    protected String pieHabil;
+    protected double rating;
+    protected Equipo equipo;
     
     int agarre,lanzamiento,fisico,ritmo,entrada,vision,passing,regate,disparo;
 
