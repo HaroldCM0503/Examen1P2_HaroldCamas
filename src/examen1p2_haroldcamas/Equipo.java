@@ -51,7 +51,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombre=" + nombre + ", pais=" + pais + ", rating=" + rating + ", plantilla=" + plantilla + '}';
+        return nombre + ":" + plantilla;
     }
     
     public double promedioRatings(){

@@ -16,7 +16,7 @@ public class Portero extends Jugador{
 
     @Override
     public String toString() {
-        return super.toString() + "Portero{" + '}';
+        return super.toString() + " Portero";
     }
     
     @Override

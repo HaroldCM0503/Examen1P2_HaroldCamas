@@ -337,8 +337,6 @@ public class Fifa extends javax.swing.JFrame {
             Tx_nacionalidad.setText("");
             FTx_edad.setText("");
             cb_equipos.setSelectedIndex(-1);
-            cb_pieHabil.setSelectedIndex(-1);
-            cb_posicion.setSelectedIndex(-1);
             
             JOptionPane.showMessageDialog(this, "Jugador agregado exitosamente!");
         }

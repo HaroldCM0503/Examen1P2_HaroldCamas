@@ -16,7 +16,7 @@ public class MedioCampo extends Jugador{
 
     @Override
     public String toString() {
-        return super.toString() + "MedioCampo{" + '}';
+        return super.toString() + " MedioCampo";
     }
     
     

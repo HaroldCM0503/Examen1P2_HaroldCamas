@@ -16,7 +16,7 @@ public class Delantero extends Jugador{
 
     @Override
     public String toString() {
-        return super.toString() + "Delantero{" + '}';
+        return super.toString() + " Delantero";
     }
 
     @Override

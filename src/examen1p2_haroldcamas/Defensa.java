@@ -16,7 +16,7 @@ public class Defensa extends Jugador{
 
     @Override
     public String toString() {
-        return super.toString() + "Defensa{" + '}';
+        return super.toString() + " Defensa";
     }
     
     
