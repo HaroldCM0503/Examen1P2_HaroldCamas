@@ -2,6 +2,20 @@ package examen1p2_haroldcamas;
 
 public class MedioCampo extends Jugador{
 
+    public MedioCampo() {
+    }
+
+    public MedioCampo(String nombre, int edad, String nacionalidad, String pieHabil, double rating, Equipo equipo, int agarre, int lanzamiento, int fisico, int ritmo, int entrada, int vision, int passing, int regate, int disparo) {
+        super(nombre, edad, nacionalidad, pieHabil, rating, equipo, agarre, lanzamiento, fisico, ritmo, entrada, vision, passing, regate, disparo);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "MedioCampo{" + '}';
+    }
+    
+    
+
     @Override
     public Jugador noPropias(Jugador j) {
         j.setAgarre(randomNoPropio());

@@ -168,18 +168,14 @@ public abstract class Jugador {
     
     public int randomNoPropio(){
         Random rand = new Random();
-        int rtg = 101;
-        
-        while(rtg > 100){
-            rtg = rand.nextInt(5) + 1;
-            rtg *= 13;
-        }
+        int rtg = rand.nextInt(5) + 1;
+        rtg *= 13;
         return rtg;
     }
     
     public int randomPropio(){
         Random rand = new Random();
-        int rtg = 101;
+        int rtg = 0;
         
         while(rtg > 100 || rtg < 70){
             rtg = rand.nextInt(12) + 1;
