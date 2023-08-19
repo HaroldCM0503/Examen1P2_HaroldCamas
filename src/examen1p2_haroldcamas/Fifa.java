@@ -79,6 +79,7 @@ public class Fifa extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cb_tipoEliminar = new javax.swing.JComboBox<>();
         cb_cualEliminar = new javax.swing.JComboBox<>();
+        bt_eliminar = new javax.swing.JButton();
         jp_Simulacion = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -433,20 +434,32 @@ public class Fifa extends javax.swing.JFrame {
             }
         });
 
+        bt_eliminar.setText("Eliminar");
+        bt_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_eliminarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jp_EliminarLayout = new javax.swing.GroupLayout(jp_Eliminar);
         jp_Eliminar.setLayout(jp_EliminarLayout);
         jp_EliminarLayout.setHorizontalGroup(
             jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_EliminarLayout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(115, 115, 115)
                 .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_tipoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_cualEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                    .addGroup(jp_EliminarLayout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(115, 115, 115)
+                        .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_tipoEliminar, 0, 129, Short.MAX_VALUE)
+                            .addComponent(cb_cualEliminar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jp_EliminarLayout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jp_EliminarLayout.setVerticalGroup(
             jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,7 +472,9 @@ public class Fifa extends javax.swing.JFrame {
                 .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_cualEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar", jp_Eliminar);
@@ -675,6 +690,8 @@ public class Fifa extends javax.swing.JFrame {
                 ((Estadio) cb_cualModificar.getSelectedItem()).setCiudad(ciudad);
                 ((Estadio) cb_cualModificar.getSelectedItem()).setCapacidad(capacidad);
             }
+            
+            JOptionPane.showMessageDialog(this, "Modificado con exito!");
         }
     }//GEN-LAST:event_bt_ModificarMouseClicked
 
@@ -703,6 +720,25 @@ public class Fifa extends javax.swing.JFrame {
             cb_cualEliminar.setModel(opciones);
         }
     }//GEN-LAST:event_cb_tipoEliminarItemStateChanged
+
+    private void bt_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_eliminarMouseClicked
+        if(cb_cualEliminar.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Tiene que elegir cual eliminar!");
+        }
+        else{
+            if(cb_cualEliminar.getSelectedItem() instanceof Jugador){
+                jugadores.remove(cb_cualEliminar.getSelectedItem());
+            }
+            else if(cb_cualEliminar.getSelectedItem() instanceof Equipo){
+                equipos.remove(cb_cualEliminar.getSelectedItem());
+            }
+            else{
+                estadios.remove(cb_cualEliminar.getSelectedItem());
+            }
+            cb_cualEliminar.removeAllItems();
+            JOptionPane.showMessageDialog(this, "Eliminado con exito!");
+        }
+    }//GEN-LAST:event_bt_eliminarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -759,6 +795,7 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregarEquipo;
     private javax.swing.JButton bt_agregarEstadio;
     private javax.swing.JButton bt_agregarJugador;
+    private javax.swing.JButton bt_eliminar;
     private javax.swing.JButton bt_listar;
     private javax.swing.JComboBox<String> cb_cualEliminar;
     private javax.swing.JComboBox<String> cb_cualModificar;
