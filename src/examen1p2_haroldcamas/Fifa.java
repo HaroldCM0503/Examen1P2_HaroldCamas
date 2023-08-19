@@ -5,6 +5,7 @@
 package examen1p2_haroldcamas;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -81,8 +82,19 @@ public class Fifa extends javax.swing.JFrame {
         cb_cualEliminar = new javax.swing.JComboBox<>();
         bt_eliminar = new javax.swing.JButton();
         jp_Simulacion = new javax.swing.JPanel();
+        lb_equipo1 = new javax.swing.JLabel();
+        lb_equipo2 = new javax.swing.JLabel();
+        cb_equipoS1 = new javax.swing.JComboBox<>();
+        cb_equipoS2 = new javax.swing.JComboBox<>();
+        bt_simulacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         lb_nombreEquipo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lb_nombreEquipo.setText("Nombre del Equipo");
@@ -479,15 +491,58 @@ public class Fifa extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Eliminar", jp_Eliminar);
 
+        lb_equipo1.setText("Equipo 1:");
+
+        lb_equipo2.setText("Equipo 2:");
+
+        cb_equipoS1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_equipoS1ItemStateChanged(evt);
+            }
+        });
+
+        bt_simulacion.setText("Simular Partido");
+        bt_simulacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_simulacionMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jp_SimulacionLayout = new javax.swing.GroupLayout(jp_Simulacion);
         jp_Simulacion.setLayout(jp_SimulacionLayout);
         jp_SimulacionLayout.setHorizontalGroup(
             jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jp_SimulacionLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addGroup(jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jp_SimulacionLayout.createSequentialGroup()
+                        .addComponent(lb_equipo2)
+                        .addGap(84, 84, 84)
+                        .addComponent(cb_equipoS2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jp_SimulacionLayout.createSequentialGroup()
+                        .addComponent(lb_equipo1)
+                        .addGap(84, 84, 84)
+                        .addComponent(cb_equipoS1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_SimulacionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_simulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(226, 226, 226))
         );
         jp_SimulacionLayout.setVerticalGroup(
             jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jp_SimulacionLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_equipo1)
+                    .addComponent(cb_equipoS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_SimulacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_equipo2)
+                    .addComponent(cb_equipoS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(bt_simulacion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(231, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Simulacion", jp_Simulacion);
@@ -727,10 +782,12 @@ public class Fifa extends javax.swing.JFrame {
         }
         else{
             if(cb_cualEliminar.getSelectedItem() instanceof Jugador){
-                jugadores.remove(cb_cualEliminar.getSelectedItem());
+                jugadores.remove(cb_cualEliminar.getSelectedItem());    
             }
             else if(cb_cualEliminar.getSelectedItem() instanceof Equipo){
                 equipos.remove(cb_cualEliminar.getSelectedItem());
+                ((DefaultComboBoxModel) cb_equipos.getModel()).removeElement(cb_cualEliminar.getSelectedItem());
+                ((DefaultComboBoxModel) cb_equiposEstadio.getModel()).removeElement(cb_cualEliminar.getSelectedItem());
             }
             else{
                 estadios.remove(cb_cualEliminar.getSelectedItem());
@@ -739,6 +796,129 @@ public class Fifa extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Eliminado con exito!");
         }
     }//GEN-LAST:event_bt_eliminarMouseClicked
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        DefaultComboBoxModel equip = (DefaultComboBoxModel) cb_equipoS1.getModel(); 
+        cb_equipoS1.removeAllItems();
+        for (Equipo q : equipos) {
+            equip.addElement(q);
+        }
+        cb_equipoS1.setModel(equip);
+        if(equipos.size() > 1){
+            cb_equipoS1.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void cb_equipoS1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_equipoS1ItemStateChanged
+        DefaultComboBoxModel equip2 = (DefaultComboBoxModel) cb_equipoS2.getModel();
+        cb_equipoS2.removeAllItems();
+        for (Equipo q : equipos) {
+            if(cb_equipoS1.getSelectedItem() != null){
+                if(!cb_equipoS1.getSelectedItem().equals(q)){
+                    equip2.addElement(q);
+                }
+            } 
+        }
+        cb_equipoS2.setModel(equip2);
+    }//GEN-LAST:event_cb_equipoS1ItemStateChanged
+
+    private void bt_simulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_simulacionMouseClicked
+        if(cb_equipoS1.getSelectedIndex() == -1 || cb_equipoS2.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Tiene que elegir 2 equipos!");
+        }
+        else if (((Equipo) cb_equipoS1.getSelectedItem()).getPlantilla().size() != 4 || ((Equipo) cb_equipoS2.getSelectedItem()).getPlantilla().size() != 4){
+            JOptionPane.showMessageDialog(this, "Ambos equipos tienen que tener 4 jugadores!");
+        }
+        else{
+            Random rand = new Random();
+            int golesQ1 = 0;
+            int golesQ2 = 0;
+            double menor = 0;
+            double mayor = 0;
+            Equipo q1 = (Equipo) cb_equipoS1.getSelectedItem();
+            Equipo q2 = (Equipo) cb_equipoS2.getSelectedItem();
+            
+            if(q1.getRating() > q2.getRating()){
+                double probabilidad = q1.getRating() - q2.getRating();
+                if(probabilidad <= 10){
+                    probabilidad *= 4;
+                    menor = probabilidad;
+                    mayor = 100 - menor;
+                    
+                    int random = rand.nextInt(5);
+                    for (int i = 1; i <= random; i++) {
+                        int rng = rand.nextInt(100) + 1;
+                        if(rng < menor + 1){
+                            golesQ2++;
+                        }
+                        else{
+                            golesQ1++;
+                        }
+                    }
+                }
+                else{
+                    probabilidad *= 5;
+                    mayor = probabilidad;
+                    menor = 100 - mayor;
+                    
+                    int random = rand.nextInt(10);
+                    for (int i = 1; i <= random; i++){
+                        int rng = rand.nextInt(100) + 1;
+                        if(rng < menor + 1){
+                            golesQ2++;
+                        }
+                        else{
+                            golesQ1++;
+                        }
+                    }
+                } 
+            }
+            else{
+                double probabilidad = q2.getRating() - q1.getRating();
+                if(probabilidad <= 10){
+                    probabilidad *= 4;
+                    menor = probabilidad;
+                    mayor = 100 - menor;
+                    
+                    int random = rand.nextInt(5);
+                    for (int i = 1; i <= random; i++) {
+                        int rng = rand.nextInt(100) + 1;
+                        if(rng < menor + 1){
+                            golesQ1++;
+                        }
+                        else{
+                            golesQ2++;
+                        }
+                    }
+                }
+                else{
+                    probabilidad *= 5;
+                    mayor = probabilidad;
+                    menor = 100 - mayor;
+                    
+                    int random = rand.nextInt(10);
+                    for (int i = 1; i <= random; i++){
+                        int rng = rand.nextInt(100) + 1;
+                        if(rng < menor + 1){
+                            golesQ1++;
+                        }
+                        else{
+                            golesQ2++;
+                        }
+                    }
+                }
+            }
+            if(golesQ1 > golesQ2){
+                JOptionPane.showMessageDialog(this, "El equipo 1: " + q1.getNombre() + " gana con " + golesQ1 + " goles!");
+            }
+            else if(golesQ2 > golesQ1){
+                JOptionPane.showMessageDialog(this, "El equipo 2: " + q2.getNombre() + " gana con " + golesQ2 + " goles!");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Es un empate con " + golesQ1 + " goles!!!");
+            }
+        }
+    }//GEN-LAST:event_bt_simulacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -797,8 +977,11 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregarJugador;
     private javax.swing.JButton bt_eliminar;
     private javax.swing.JButton bt_listar;
+    private javax.swing.JButton bt_simulacion;
     private javax.swing.JComboBox<String> cb_cualEliminar;
     private javax.swing.JComboBox<String> cb_cualModificar;
+    private javax.swing.JComboBox<String> cb_equipoS1;
+    private javax.swing.JComboBox<String> cb_equipoS2;
     private javax.swing.JComboBox<String> cb_equipos;
     private javax.swing.JComboBox<String> cb_equiposEstadio;
     private javax.swing.JComboBox<String> cb_pieHabil;
@@ -821,6 +1004,8 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JLabel lb_ciudad;
     private javax.swing.JLabel lb_cualM;
     private javax.swing.JLabel lb_edad;
+    private javax.swing.JLabel lb_equipo1;
+    private javax.swing.JLabel lb_equipo2;
     private javax.swing.JLabel lb_equipoEstadio;
     private javax.swing.JLabel lb_equipoJugador;
     private javax.swing.JLabel lb_nacionalidad;
