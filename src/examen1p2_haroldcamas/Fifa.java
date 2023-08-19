@@ -69,12 +69,16 @@ public class Fifa extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TxA_lista = new javax.swing.JTextArea();
         jp_Modificar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lb_tipoM = new javax.swing.JLabel();
+        lb_cualM = new javax.swing.JLabel();
         cb_tipoModificar = new javax.swing.JComboBox<>();
         cb_cualModificar = new javax.swing.JComboBox<>();
         bt_Modificar = new javax.swing.JButton();
         jp_Eliminar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cb_tipoEliminar = new javax.swing.JComboBox<>();
+        cb_cualEliminar = new javax.swing.JComboBox<>();
         jp_Simulacion = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -363,9 +367,9 @@ public class Fifa extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Listar", jp_Listar);
 
-        jLabel1.setText("Tipo a modificar");
+        lb_tipoM.setText("Tipo a modificar");
 
-        jLabel2.setText("Cual modificar");
+        lb_cualM.setText("Cual modificar");
 
         cb_tipoModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugadores", "Equipos", "Estadios" }));
         cb_tipoModificar.addItemListener(new java.awt.event.ItemListener() {
@@ -388,8 +392,8 @@ public class Fifa extends javax.swing.JFrame {
             .addGroup(jp_ModificarLayout.createSequentialGroup()
                 .addGap(194, 194, 194)
                 .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(lb_cualM)
+                    .addComponent(lb_tipoM))
                 .addGap(73, 73, 73)
                 .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cb_tipoModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -405,11 +409,11 @@ public class Fifa extends javax.swing.JFrame {
             .addGroup(jp_ModificarLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lb_tipoM)
                     .addComponent(cb_tipoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jp_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lb_cualM)
                     .addComponent(cb_cualModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(bt_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,15 +422,44 @@ public class Fifa extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar", jp_Modificar);
 
+        jLabel1.setText("Tipo a Eliminar");
+
+        jLabel2.setText("Cual Eliminar");
+
+        cb_tipoEliminar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugadores", "Equipos", "Estadios" }));
+        cb_tipoEliminar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoEliminarItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jp_EliminarLayout = new javax.swing.GroupLayout(jp_Eliminar);
         jp_Eliminar.setLayout(jp_EliminarLayout);
         jp_EliminarLayout.setHorizontalGroup(
             jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jp_EliminarLayout.createSequentialGroup()
+                .addGap(162, 162, 162)
+                .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(115, 115, 115)
+                .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_tipoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_cualEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         jp_EliminarLayout.setVerticalGroup(
             jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jp_EliminarLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cb_tipoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_cualEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar", jp_Eliminar);
@@ -609,10 +642,67 @@ public class Fifa extends javax.swing.JFrame {
         }
         else{
             if(cb_cualModificar.getSelectedItem() instanceof Jugador){
-                
+                String nombre = JOptionPane.showInputDialog("Elija el nuevo nombre del jugador:");
+                int edad = Integer.parseInt(JOptionPane.showInputDialog("Elija la nueva edad del jugador:"));
+                String nacionalidad = JOptionPane.showInputDialog("Elija la nueva nacionalidad del jugador:");
+                int op = Integer.parseInt(JOptionPane.showInputDialog("Cual es su pierna habil?\n1.)Derecha\n2.)Izquierda"));
+                while(op < 1 || op > 2){
+                    op = Integer.parseInt(JOptionPane.showInputDialog("Cual es su pierna habil?\n1.)Derecha\n2.)Izquierda"));
+                }
+                ((Jugador) cb_cualModificar.getSelectedItem()).setNombre(nombre);
+                ((Jugador) cb_cualModificar.getSelectedItem()).setEdad(edad);
+                ((Jugador) cb_cualModificar.getSelectedItem()).setNacionalidad(nacionalidad);
+                if(op == 1){
+                    ((Jugador) cb_cualModificar.getSelectedItem()).setPieHabil("Derecha");
+                }
+                else{
+                    ((Jugador) cb_cualModificar.getSelectedItem()).setPieHabil("Izquierda");
+                }
+            }
+            
+            else if(cb_cualModificar.getSelectedItem() instanceof Equipo){
+                String nombre = JOptionPane.showInputDialog("Elija el nuevo nombre del equipo:");
+                String pais = JOptionPane.showInputDialog("Elija el nuevo pais del equipo:");
+                ((Equipo) cb_cualModificar.getSelectedItem()).setNombre(nombre);
+                ((Equipo) cb_cualModificar.getSelectedItem()).setPais(pais);
+            }
+            
+            else{
+                String nombre = JOptionPane.showInputDialog("Elija el nuevo nombre del estadio:");
+                String ciudad = JOptionPane.showInputDialog("Elija la nueva ciudad del estadio:");
+                int capacidad = Integer.parseInt(JOptionPane.showInputDialog("Elija la nueva capacidad del estadio"));
+                ((Estadio) cb_cualModificar.getSelectedItem()).setNombre(nombre);
+                ((Estadio) cb_cualModificar.getSelectedItem()).setCiudad(ciudad);
+                ((Estadio) cb_cualModificar.getSelectedItem()).setCapacidad(capacidad);
             }
         }
     }//GEN-LAST:event_bt_ModificarMouseClicked
+
+    private void cb_tipoEliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoEliminarItemStateChanged
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_tipoEliminar.getModel();
+        DefaultComboBoxModel opciones = (DefaultComboBoxModel) cb_cualEliminar.getModel();
+        String tipo = modelo.getSelectedItem().toString();
+        opciones.removeAllElements();
+        
+        if(tipo.equals("Jugadores")){
+            for (Jugador j : jugadores) {
+                opciones.addElement(j);
+            }
+            cb_cualEliminar.setModel(opciones);
+        }
+        else if(tipo.equals("Equipos")){
+            for (Equipo q : equipos) {
+                opciones.addElement(q);
+            }
+            cb_cualEliminar.setModel(opciones);
+        }
+        else{
+            for (Estadio st : estadios) {
+                opciones.addElement(st);
+            }
+            cb_cualEliminar.setModel(opciones);
+        }
+    }//GEN-LAST:event_cb_tipoEliminarItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -670,11 +760,13 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregarEstadio;
     private javax.swing.JButton bt_agregarJugador;
     private javax.swing.JButton bt_listar;
+    private javax.swing.JComboBox<String> cb_cualEliminar;
     private javax.swing.JComboBox<String> cb_cualModificar;
     private javax.swing.JComboBox<String> cb_equipos;
     private javax.swing.JComboBox<String> cb_equiposEstadio;
     private javax.swing.JComboBox<String> cb_pieHabil;
     private javax.swing.JComboBox<String> cb_posicion;
+    private javax.swing.JComboBox<String> cb_tipoEliminar;
     private javax.swing.JComboBox<String> cb_tipoModificar;
     private javax.swing.JComboBox<String> cb_tiposListar;
     private javax.swing.JLabel jLabel1;
@@ -690,6 +782,7 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JPanel jp_agregarJugador;
     private javax.swing.JLabel lb_capacidad;
     private javax.swing.JLabel lb_ciudad;
+    private javax.swing.JLabel lb_cualM;
     private javax.swing.JLabel lb_edad;
     private javax.swing.JLabel lb_equipoEstadio;
     private javax.swing.JLabel lb_equipoJugador;
@@ -701,5 +794,6 @@ public class Fifa extends javax.swing.JFrame {
     private javax.swing.JLabel lb_pieHabil;
     private javax.swing.JLabel lb_posicion;
     private javax.swing.JLabel lb_tipo;
+    private javax.swing.JLabel lb_tipoM;
     // End of variables declaration//GEN-END:variables
 }
